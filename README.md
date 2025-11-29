@@ -27,7 +27,7 @@ requirements/ # Project requirements
 - Admin: `A001` (username: admin, password: admin)
 
 ## Requirements
-See `requirements/requirements.txt` for full functional and non-functional requirements.
+See `requirements/requirements.pdf` for full functional and non-functional requirements.
 
 ## Diagrams
 - `diagrams/use_case.png`
