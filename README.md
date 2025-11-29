@@ -12,7 +12,7 @@ A C++ console-based bank account simulator project with Admin and Client roles.
 
 ## Project Structure
 ```
-src/ # Source code
+code/ # Source code
 diagrams/ # Use case & class diagrams
 requirements/ # Project requirements
 ```
