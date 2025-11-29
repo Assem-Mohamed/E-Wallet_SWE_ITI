@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1764266586 source:f:\iti\swe project\bank\main.cpp
+	<iostream>
+	<vector>
+	<conio.h>
+	"Admin.h"
+	"Client.h"
+	"AccountManager.h"
+
+1764265326 f:\iti\swe project\bank\admin.h
+	"User.h"
+	"Client.h"
+	"AccountManager.h"
+	<iostream>
+
+1764265289 f:\iti\swe project\bank\user.h
+	<string>
+
+1764266509 f:\iti\swe project\bank\accountmanager.h
+	"Client.h"
+	<vector>
+	<string>
+
+1764265289 f:\iti\swe project\bank\client.h
+	"User.h"
+	<iostream>
+	<vector>
+	<iomanip>
+

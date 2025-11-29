@@ -1,0 +1,77 @@
+#ifndef CLIENT_H
+#define CLIENT_H
+
+#include "User.h"
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+class Client : public User {
+private:
+    static int nextID;
+    double balance = 0.0;
+    string status = "active";
+    vector<string> transactions;
+
+public:
+    Client() = default;
+
+    // Constructor for pre-loaded clients
+    Client(string acc, string uname, string pass, string ph, double bal = 0.0)
+        : User(acc, uname, pass, ph), balance(bal) {}
+
+    // Constructor for registration (auto ID)
+    Client(string uname, string pass, string ph, double bal = 0.0)
+        : User(generateID(), uname, pass, ph), balance(bal) {}
+
+    void viewProfile() const {
+        cout << "\n--- Client Profile ---\n";
+        cout << "AccID: " << AccID
+             << "\nUsername: " << username
+             << "\nBalance: " << balance
+             << "\nStatus: " << status << endl;
+    }
+
+    void transferOut(const string& targetAccID, double amount) {
+        if (status != "active") {
+            cout << "Account not active.\n";
+            return;
+        }
+        if (amount <= balance) {
+            balance -= amount;
+            transactions.push_back("Transferred " + to_string(amount) + " to " + targetAccID);
+            cout << "Transfer successful.\n";
+        } else {
+            cout << "Insufficient balance!\n";
+        }
+    }
+
+    void addIncoming(const string& fromAccID, double amount) {
+        balance += amount;
+        transactions.push_back("Received " + to_string(amount) + " from " + fromAccID);
+    }
+
+    void viewTransactions() const {
+        cout << "\n--- Transaction History ---\n";
+        if (transactions.empty()) {
+            cout << "No transactions yet.\n";
+            return;
+        }
+        for (const auto &t : transactions) cout << t << endl;
+    }
+
+    double getBalance() const { return balance; }
+    void setStatus(const string& st) { status = st; }
+    string getStatus() const { return status; }
+
+private:
+    static string generateID() {
+        string id = "C" + string(3 - to_string(nextID).length(), '0') + to_string(nextID++);
+        return id;
+    }
+};
+
+int Client::nextID = 1;
+
+#endif // CLIENT_H
