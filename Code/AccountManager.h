@@ -39,4 +39,4 @@ public:
     }
 };
 
-#endif // ACCOUNTMANAGER_H
+#endif

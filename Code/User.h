@@ -25,4 +25,4 @@ public:
     string getAccID() const { return AccID; }
 };
 
-#endif // USER_H
+#endif

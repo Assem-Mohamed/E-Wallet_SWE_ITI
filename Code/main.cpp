@@ -33,7 +33,6 @@ int showHighlightMenu(const vector<string>& options) {
     }
 }
 
-// -------- Client Menu --------
 void clientMenu(Client* c, AccountManager& mgr) {
     vector<string> menu = {"View Profile", "Transfer Money", "View Transactions", "Logout"};
     int choice;
@@ -54,7 +53,6 @@ void clientMenu(Client* c, AccountManager& mgr) {
     } while (choice != 3 && choice != -1);
 }
 
-// -------- Admin Menu --------
 void adminMenu(Admin* a, AccountManager& mgr) {
     vector<string> menu = {"View All Clients","Search Client","Enable Account","Disable Account","Statistics","Logout"};
     int choice;
@@ -74,7 +72,6 @@ void adminMenu(Admin* a, AccountManager& mgr) {
     } while (choice != 5 && choice != -1);
 }
 
-// -------- Login/Register Menu --------
 void loginMenu(AccountManager& mgr, Admin& admin) {
     vector<string> mainMenu = {"Login", "Register", "Exit"};
     int choice;
@@ -83,7 +80,7 @@ void loginMenu(AccountManager& mgr, Admin& admin) {
         system("cls");
         choice = showHighlightMenu(mainMenu);
 
-        if (choice == 0) { // Login
+        if (choice == 0) {
             system("cls");
             string uname, pass;
             cout << "Username: "; cin >> uname;
@@ -111,14 +108,13 @@ void loginMenu(AccountManager& mgr, Admin& admin) {
                 system("pause");
             }
         }
-        else if (choice == 1) { // Register Client
+        else if (choice == 1) {
             system("cls");
             string uname, password, phone;
             double balance;
 
             cout << "--- Client Registration ---\n";
 
-            // Username unique check
             do {
                 cout << "Enter Username: "; cin >> uname;
                 if (mgr.isUsernameTaken(uname))
@@ -128,7 +124,6 @@ void loginMenu(AccountManager& mgr, Admin& admin) {
 
             cout << "Enter Password: "; cin >> password;
 
-            // Phone unique check
             do {
                 cout << "Enter Phone: "; cin >> phone;
                 if (mgr.isPhoneTaken(phone))
@@ -146,16 +141,15 @@ void loginMenu(AccountManager& mgr, Admin& admin) {
             system("pause");
         }
 
-    } while (choice != 2 && choice != -1); // Exit
+    } while (choice != 2 && choice != -1);
     system("cls");
     cout << "Exiting program...\n";
 }
 
-// -------- Main --------
 int main() {
     AccountManager mgr;
-    Client* c1 = new Client("C001","ahmed","123","0101",3000);
-    Client* c2 = new Client("C002","youssef","123","0102",1500);
+    Client* c1 = new Client("ahmed","123","0101",3000);
+    Client* c2 = new Client("youssef","123","0102",1500);
     mgr.registerClient(c1); mgr.registerClient(c2);
 
     Admin admin("A001","admin","admin","012");

@@ -17,11 +17,9 @@ private:
 public:
     Client() = default;
 
-    // Constructor for pre-loaded clients
     Client(string acc, string uname, string pass, string ph, double bal = 0.0)
         : User(acc, uname, pass, ph), balance(bal) {}
 
-    // Constructor for registration (auto ID)
     Client(string uname, string pass, string ph, double bal = 0.0)
         : User(generateID(), uname, pass, ph), balance(bal) {}
 
@@ -74,4 +72,4 @@ private:
 
 int Client::nextID = 1;
 
-#endif // CLIENT_H
+#endif
